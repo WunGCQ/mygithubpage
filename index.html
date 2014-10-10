@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.scrollTo.js"></script>
+    <link rel="stylesheet" href="css/css.css"/>
+    <title>王春琪</title>
+
+
+    <style>
+        body{
+            width: 100%;
+            height: auto;
+            margin: auto;
+            overflow-x: hidden;
+            padding: 0;
+            display: block;
+            cursor: url('img/cursor.png'),default;
+        }
+        #container{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+        }
+        .fullscreen{
+            width: 100%;
+            height: auto;
+            background: #000;
+            position: relative;
+        }
+
+        /*header*/
+        #header {
+            background-color: #000000;
+        }
+
+
+
+        #magic,#inner-circle,#outer-circle{
+            display: block;
+            margin: auto;
+            position: absolute;
+            z-index:1;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0,0);
+            transform:scale(0,0);
+
+        }
+        #header-circle{
+            display: block;
+            margin: auto;
+            position: absolute;
+            width: 558px;
+            height: 558px;
+            z-index:1;
+            text-align: left;
+        }
+        .paused{
+            animation-play-state:paused;
+            -webkit-animation-play-state:paused; /* Safari 和 Chrome */
+        }
+        #inner-circle{
+            top:142px;
+            left:142px;
+        }
+        #icon-me{
+            position: absolute;
+            z-index:10;
+            height: 226px;
+            border-radius: 300px;
+            cursor: url('img/pointer.png'),pointer;
+            opacity: 0.92;
+        }
+        .icon-intro{
+            position: absolute;
+            z-index: 2;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0,0);
+            transform:scale(0,0);
+            border-radius: 120px;
+            cursor: url('img/pointer.png'),pointer;
+        }
+        #icon-brief-intro{
+            top:-40px;
+            left:176px;
+        }
+        #icon-skills{
+            top:109px;
+            left: 379px;
+        }
+        #icon-projects{
+            top: 348px;
+            left: 300px;
+        }
+        #icon-blog{
+            top: 348px;
+            left: 50px;
+        }
+        /*#music*/
+        #icon-music{
+            top: 109px;
+            left: -28px;
+        }
+        /*#briefintro*/
+        #briefintro{
+
+        }
+
+        /*#skills*/
+        #skills{
+
+        }
+        /*#nichijou*/
+        #nichijou{
+
+        }
+
+        /*#music*/
+        #music{
+
+        }
+        /*#projects*/
+        #projects{
+
+        }
+        /*#footer*/
+        #footer{
+
+        }
+
+    </style>
+</head>
+<body onresize="load_magic()">
+    <div id="container">
+        <div class="fullscreen" id="header" >
+            <div id="header-circle" >
+                <img src="img/outer-circle.png" id="outer-circle" class=""/>
+                <img src="img/magic.png" id="magic" class=""/>
+                <img src="img/inner-circle.png" id="inner-circle" class=""/>
+                <!--五个介绍块区-->
+                <img src="img/icon-intro.jpg" alt="breif-intro" class="icon-intro " id="icon-brief-intro"/>
+                <img src="img/icon-skills.jpg" alt="my skills" class="icon-intro " id="icon-skills"/>
+                <img src="img/icon-projects.jpg" alt="my projects" class="icon-intro " id="icon-projects"/>
+                <img src="img/icon-blog.jpg" alt="my blog" class="icon-intro " id="icon-blog"/>
+                <img src="img/icon-music.jpg" alt="my music" class="icon-intro " id="icon-music"/>
+            </div>
+            <img src="img/icon-me.jpg" alt="Me" id="icon-me" class=""/>
+        </div>
+        <div class="fullscreen" id="briefintro">
+
+        </div>
+        <div class="fullscreen" id="skills">
+
+        </div>
+        <div class="fullscreen" id="projects">
+
+        </div>
+        <div class="fullscreen" id="blog">
+
+        </div>
+        <div class="fullscreen" id="music">
+
+        </div>
+        <div id="footer">
+
+        </div>
+    </div>
+</body>
+<script>
+//    $(window).ready();
+    var magic_r=558;
+    var headicon_r=226;
+    function load_magic(){
+        var w = $(window).outerWidth();
+        var h = $(window).outerHeight();
+
+        $("#header").css({height:h});
+        var magic_center_x = Math.floor((w-magic_r)/2);
+        var magic_center_y = Math.floor((h-magic_r)/2);
+
+        $("#icon-me").css({left: Math.floor((w-headicon_r)/2),top: Math.floor((h-headicon_r)/2)});
+        $("#header-circle").css({left:  magic_center_x,top:  magic_center_y});
+    }
+    function load_animation(){
+        var s0=setTimeout(function(){
+            $("#icon-me").attr("class","head-showed");
+            $(".icon-intro").attr("class","icon-intro icon-showed");
+            $("#magic").attr("class","circle-showed");
+            $("#inner-circle").attr("class","circle-showed");
+            $("#outer-circle").attr("class","outer-circle-showed");
+        },0);
+        var s1=setTimeout(function(){
+            $("#outer-circle").attr("class","rotating");
+        },700);
+        var s2=setTimeout(function(){
+            $("#inner-circle").attr("class","reverse-rotating");
+        },700);
+    }
+    load_magic();
+    load_animation();
+</script>
+</html>
